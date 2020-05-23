@@ -41,7 +41,7 @@ const taskSchema = moongose.Schema({
         required: true,
         trim: true
     },
-    avatar: {
+    taskphoto: {
         type: Buffer
     }
 })

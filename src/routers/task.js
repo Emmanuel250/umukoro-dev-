@@ -38,13 +38,13 @@ const upload = multer({
         cb(undefined, true)
     }
 })
-router.post('/orderForm', upload.single('avatar'), async(req, res) => {
+router.post('/orderForm', upload.single('taskphoto'), async(req, res) => {
     const task = new Task({
         ...req.body
     })
 
     try {
-        const buffer = await sharp(req.file.buffer).resize({ width: 250, height: 250 }).png().toBuffer()
+        const buffer = await sharp(req.file.buffer).png().toBuffer()
         task.avatar = buffer
         await task.save()
         return res.status(201).send(task)
